@@ -1,6 +1,6 @@
 /******************************************************************
  *
- *   YOUR NAME / SECTION NUMBER
+ *   ENRIQUE PRADO GUTIERREZ / 001
  *
  *   Note, additional comments provided throughout this source code
  *   is for educational purposes
@@ -104,7 +104,32 @@ public class Graph {
   
   public int findRoot() {
 
-    // ADD YOUR CODE HERE - DO NOT FORGET TO ADD YOUR NAME/SECTION AT TOP OF FILE
-    return -1;
+    int[] incomingEdges = new int [numVertices];
+
+    for(int i = 0; i < numVertices; i++){
+      for(int neighbor : adjListArr[i]){
+        incomingEdges[neighbor]++;
+      }
+    }
+
+    int rootIndex = -1;
+
+    for(int i = 0; i < numVertices; i++){
+      if(incomingEdges[i] == 0){
+        if (rootIndex == -1){
+          rootIndex = i;
+        } else{
+          return -1;
+        }
+      }
+    }
+
+    if (rootIndex == -1){
+      return -1;
+    }
+
+
+
+    return vertexValues.get(rootIndex);
   } 
 }
